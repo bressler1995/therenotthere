@@ -27,9 +27,11 @@ class Mover {
   }
 
   show() {
-    stroke(255);
-    strokeWeight(2);
-    fill(255, 100);
+    push();
+    // stroke(150, 150, 150);
+    noStroke();
+    fill(0, 255);
     ellipse(this.pos.x, this.pos.y, this.r * 2);
+    pop();
   }
 }

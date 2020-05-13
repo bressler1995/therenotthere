@@ -6,10 +6,11 @@
 // https://editor.p5js.org/codingtrain/sketches/MkLraatd
 
 class Attractor {
-  constructor(x, y, m) {
+  constructor(x, y, m, cinput) {
     this.pos = createVector(x, y);
     this.mass = m;
     this.r = sqrt(this.mass) * 2;
+    this.color = cinput;
   }
 
   attract(mover) {
@@ -22,8 +23,10 @@ class Attractor {
   }
 
   show() {
+    push();
     noStroke();
-    fill(255, 0, 100);
+    fill(this.color[0], this.color[1], this.color[2], this.color[3]);
     ellipse(this.pos.x, this.pos.y, this.r * 2);
+    pop();
   }
 }
