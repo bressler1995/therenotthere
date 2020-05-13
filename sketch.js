@@ -39,7 +39,7 @@ function setup() {
   //   movers[i] = new Mover(x, y, m);
   // }
   // attractor[0] = new Attractor(width / 2, height / 2, random(20, 50));
-  background(255);
+  background(230);
   
 }
 
