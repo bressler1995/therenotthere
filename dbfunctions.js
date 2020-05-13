@@ -14,9 +14,18 @@ function gotData(data) {
     fbDataArray = Object.values(fbData);
     fbCount = fbDataArray.length;
     
+    if(initapp == false) {
+        initapp = true;
+        movers = [];
+    }
 
     for(let i = 0; i < fbDataArray.length; i++) {
-     attractor.push(new Attractor(fbDataArray[i].posX, fbDataArray[i].posY, fbDataArray[i].size, fbDataArray[i].bg));
+        attractor.push(new Attractor(fbDataArray[i].posX, fbDataArray[i].posY, fbDataArray[i].size, fbDataArray[i].bg));
+
+        let x = random(windowWidth);
+        let y = random(windowHeight);
+        let m = random(20, 100);
+        movers.push(new Mover(x, y, m));
     }
 
   } else {

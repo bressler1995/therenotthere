@@ -11,6 +11,7 @@ let fbDataArray; // firebase data values converted to an array
 let fbCount = 0;
 let database; // reference to our firebase database
 let folderName = "attractors"; // name of folder you create in db
+let initapp = false;
 
 function setup() {
   let config = {
@@ -31,12 +32,12 @@ function setup() {
   
 
   createCanvas(windowWidth, windowHeight);
-  for (let i = 0; i < 5; i++) {
-    let x = random(width);
-    let y = random(height);
-    let m = random(20, 70);
-    movers[i] = new Mover(x, y, m);
-  }
+  // for (let i = 0; i < 5; i++) {
+  //   let x = random(windowWidth);
+  //   let y = random(windowHeight);
+  //   let m = random(10, 30);
+  //   movers[i] = new Mover(x, y, m);
+  // }
   // attractor[0] = new Attractor(width / 2, height / 2, random(20, 50));
   background(255);
   
@@ -68,17 +69,11 @@ function mousePressed() {
       type: "attractor",
       posX: mouseX,
       posY: mouseY,
-      size: random(20, 50),
+      size: random(50, 100),
       bg: [random(255), random(255), random(255), random(255)],
     }
   );
 
-  for (let i = 0; i < 2; i++) {
-    let x = random(width);
-    let y = random(height);
-    let m = random(20, 100);
-    movers.push(new Mover(x, y, m));
-  }
 }
 
 function windowResized() {
