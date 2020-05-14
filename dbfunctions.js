@@ -20,7 +20,7 @@ function gotData(data) {
     }
 
     for(let i = 0; i < fbDataArray.length; i++) {
-        attractor.push(new Attractor(fbDataArray[i].posX, fbDataArray[i].posY, fbDataArray[i].size, fbDataArray[i].bg));
+        attractor.push(new Attractor(fbDataArray[i].posX, fbDataArray[i].posY, fbDataArray[i].size, fbDataArray[i].bg, fbDataArray[i].text));
 
         let x = random(windowWidth);
         let y = random(windowHeight);

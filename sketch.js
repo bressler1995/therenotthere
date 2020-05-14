@@ -14,6 +14,8 @@ let folderName = "attractors"; // name of folder you create in db
 let initapp = false;
 let win_open = -1;
 let win_pos = [];
+let message_selected = false;
+let selected_message = -1;
 
 let message_window;
 let submit_opt;
@@ -76,6 +78,15 @@ function draw() {
   //   attractor[0].pos.y = mouseY;
   // }
 
+  if(message_selected == true) {
+    push();
+    fill(255, 0, 0);
+    textFont('Arial');
+    textSize(14);
+    text(attractor[selected_message].mytext, 0, 20);
+    pop();
+  }
+
 }
 
 function windowResized() {
@@ -122,8 +133,11 @@ function submit_mark() {
 
 function mouseMoved() {
   for (i = 0; i < attractor.length; i++) {
-    if(mouseX > attractor.pos.x) {
-      
+    if(mouseX >= attractor[i].pos.x && mouseX <= (attractor[i].pos.x + (attractor[i].r * 2)) && mouseY >= attractor[i].pos.y && mouseY <= (attractor[i].pos.y + (attractor[i].r * 2))) {
+      message_selected = true;
+      selected_message = i;
+    } else {
+      message_selected = false;
     }
   }
 }

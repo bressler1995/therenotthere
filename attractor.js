@@ -6,11 +6,12 @@
 // https://editor.p5js.org/codingtrain/sketches/MkLraatd
 
 class Attractor {
-  constructor(x, y, m, cinput) {
+  constructor(x, y, m, cinput, inputtext) {
     this.pos = createVector(x, y);
     this.mass = m;
     this.r = sqrt(this.mass) * 2;
     this.color = cinput;
+    this.mytext = inputtext;
   }
 
   attract(mover) {
