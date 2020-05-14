@@ -12,6 +12,14 @@ let fbCount = 0;
 let database; // reference to our firebase database
 let folderName = "attractors"; // name of folder you create in db
 let initapp = false;
+let win_open = -1;
+let win_pos = [];
+
+let message_window;
+let submit_opt;
+let x_opt;
+let mycanvas;
+let message_text;
 
 function setup() {
   let config = {
@@ -31,7 +39,7 @@ function setup() {
 
   
 
-  createCanvas(windowWidth, windowHeight);
+  mycanvas = createCanvas(windowWidth, windowHeight);
   // for (let i = 0; i < 5; i++) {
   //   let x = random(windowWidth);
   //   let y = random(windowHeight);
@@ -39,6 +47,14 @@ function setup() {
   //   movers[i] = new Mover(x, y, m);
   // }
   // attractor[0] = new Attractor(width / 2, height / 2, random(20, 50));
+  message_window = select('#message_window');
+  submit_opt = select('#submit_opt')
+  x_opt = select('#x_opt');
+  message_text = select("#message_text")
+  
+  mycanvas.mousePressed(toggle_win);
+  submit_opt.mousePressed(submit_mark);
+  x_opt.mousePressed(close_win);
   background(230);
   
 }
@@ -62,20 +78,52 @@ function draw() {
 
 }
 
-function mousePressed() {
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+function toggle_win() {
+  win_pos[0] = mouseX;
+  win_pos[1] = mouseY;
+  let message_dom = document.getElementById("message_window")
+  message_dom.style.top = win_pos[1] + "px";
+  message_dom.style.left = win_pos[0] + "px";
+
+  if(message_window.hasClass("hide_window") == false) {
+    message_window.addClass("hide_window");
+  }
+
+  win_open = 1;
   
+}
+
+function close_win() {
+  if(message_window.hasClass("hide_window") == true) {
+    message_window.removeClass("hide_window");
+  }
+
+  win_open = -1;
+}
+
+function submit_mark() {
   createNode(folderName, fbCount, 
     {
       type: "attractor",
-      posX: mouseX,
-      posY: mouseY,
+      posX: win_pos[0],
+      posY: win_pos[1],
       size: random(50, 100),
       bg: [random(255), random(255), random(255), random(255)],
+      text: message_text.value(),
     }
   );
 
+  close_win();
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+function mouseMoved() {
+  for (i = 0; i < attractor.length; i++) {
+    if(mouseX > attractor.pos.x) {
+      
+    }
+  }
 }

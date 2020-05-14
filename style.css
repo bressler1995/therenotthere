@@ -2,4 +2,75 @@ body, html {
     margin:0;
     overflow: hidden;
     height:100%;
+    font-family: 'Arial';
+}
+
+.message_window {
+    display: none;
+    position: fixed;
+    width: 100%;
+    max-width: 500px;
+    padding:30px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 10;
+    border-radius: 7px;
+    opacity:0;
+   
+}
+
+.message_window h3 {
+    margin:0;
+    padding:0;
+    margin-bottom: 12px;
+    color: #FFF;
+}
+
+.message_window textarea {
+    display: block;
+    width:100%;
+    height: 70px;
+    font-family: 'Arial';
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 7px;
+    border:0;
+    padding: 7px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.submit_opt {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 35px;
+    background-color: #FFF;
+    color:#222;
+    border:0;
+    border-radius: 7px;
+    font-size: 14px;
+    text-transform: uppercase;
+    
+}
+
+.hide_window {
+    display: block !important;
+    opacity:1;
+}
+
+.message_window_x {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right:10px;
+    background-color: #FFF;
+    border-radius: 50%;
+    width: 25px;
+    height:25px;
+    line-height: 20px;
+    font-size:14px;
+    border:0;
+    color: #222;
+    padding:0;
 }
