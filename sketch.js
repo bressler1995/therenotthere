@@ -79,12 +79,29 @@ function draw() {
   // }
 
   if(message_selected == true) {
-    push();
-    fill(255, 0, 0);
-    textFont('Arial');
-    textSize(14);
-    text(attractor[selected_message].mytext, 0, 20);
-    pop();
+    
+  }
+
+  for (i = 0; i < attractor.length; i++) {
+
+    if (mouseX < attractor[i].pos.x + (attractor[i].r) &&
+      mouseX + 0 > attractor[i].pos.x &&
+      mouseY < attractor[i].pos.y + (attractor[i].r) &&
+      mouseY + 0 > attractor[i].pos.y) {
+        
+        message_selected = true;
+        selected_message = i;
+
+        push();
+        fill(255, 0, 0);
+        textFont('Arial');
+        textSize(14);
+        text(attractor[selected_message].mytext, 50, 20);
+        pop();
+    } else {
+        message_selected = false;
+    }
+
   }
 
 }
@@ -129,15 +146,4 @@ function submit_mark() {
   );
 
   close_win();
-}
-
-function mouseMoved() {
-  for (i = 0; i < attractor.length; i++) {
-    if(mouseX >= attractor[i].pos.x && mouseX <= (attractor[i].pos.x + (attractor[i].r * 2)) && mouseY >= attractor[i].pos.y && mouseY <= (attractor[i].pos.y + (attractor[i].r * 2))) {
-      message_selected = true;
-      selected_message = i;
-    } else {
-      message_selected = false;
-    }
-  }
 }
